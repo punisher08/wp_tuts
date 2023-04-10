@@ -16,3 +16,26 @@
  */
 
 
+defined( 'ABSPATH') or die( 'You are not allowed to enter!');
+
+if ( file_exists( dirname(__FILE__).'/vendor/autoload.php')){
+
+    require_once dirname(__FILE__).'/vendor/autoload.php';
+
+}
+use Inc\Activate;
+use Inc\Deactivate;
+
+function plugin_activate(){
+
+    Activate::activate();
+
+}
+register_activation_hook(__FILE__,'plugin_activate');
+
+function plugin_deactivate(){
+
+    Deactivate::deactivate();
+
+}
+register_deactivation_hook(__FILE__,'plugin_deactivate');
